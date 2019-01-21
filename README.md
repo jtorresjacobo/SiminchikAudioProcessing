@@ -60,7 +60,7 @@ Paso3: Programando tarea en Jenkins
 
   Nombre del proyecto: Primer job (por ejemplo)
   
-Build → Add build step → Execute Shell y escribimos la misma series de comandos qui escribíamos para ejecutar Newman en local:
+Build → Add build step → Execute Shell y escribimos la misma series de comandos que escribíamos para ejecutar Newman en local:
 ```
 newman -c collection.json -e environment.json
 ```
