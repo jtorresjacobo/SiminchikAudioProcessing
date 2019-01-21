@@ -49,13 +49,25 @@ sudo systemctl status jenkins
 
 ## Ejecución de Tests
 Paso1:
-Descargar archivo de test en postman, coleccion , enviorement.
+Descargar archivo de test en postman, coleccion , environment.
 
 Paso2:
 Ejecutar en newman 
 ```newman -c collection.json -e environment.json```
 
 Paso3: Programando tarea en Jenkins
+* Crear job en jenkins http://localhost:8080/
+
+  Nombre del proyecto: Primer job (por ejemplo)
+  
+Build → Add build step → Execute Shell y escribimos la misma series de comandos qui escribíamos para ejecutar Newman en local:
+```
+newman -c collection.json -e environment.json
+```
+* Programando tarea de ejecución diaria
+Una vez cada dos horas a los 45 minutos después de la hora a partir de las 9:45 AM y terminando a las 3:45 PM todos los días de la semana.
+
+Disparadores de ejecuciones → Ejecutar periódicamente → 45 9-16/2 * * 1-5
 
 ## Contact
 jeantj98@gmail.com
