@@ -1,6 +1,7 @@
 # SiminchikAudioProcessing
 Processing of audio corpora for Qillqaq software
 ## Automatización de pruebas en el servidor
+La automatización de pruebas consiste en utilizar un programa para controlar la ejecución de pruebas y comprobar si los resultados obtenidos son los que estábamos esperando. 
 ### Pre-Requisitos
 * Python 2.7
 * Postman
@@ -45,3 +46,13 @@ Ya systemctlque no muestra resultados, usaremos su statuscomando para verificar 
 ```
 sudo systemctl status jenkins
 ```
+
+## Ejecución de Tests
+Paso1:
+Descargar archivo del test en postman
+Paso2:
+Ejecutar
+```newman -c collection.json -e environment.json```
+
+## Contact
+jeantj98@gmail.com
