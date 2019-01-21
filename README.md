@@ -49,10 +49,13 @@ sudo systemctl status jenkins
 
 ## Ejecución de Tests
 Paso1:
-Descargar archivo del test en postman
+Descargar archivo de test en postman, coleccion , enviorement.
+
 Paso2:
-Ejecutar
+Ejecutar en newman 
 ```newman -c collection.json -e environment.json```
+
+Paso3: Programando tarea en Jenkins
 
 ## Contact
 jeantj98@gmail.com
