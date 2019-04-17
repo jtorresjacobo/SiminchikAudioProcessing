@@ -4,10 +4,10 @@ Processing of audio corpora for Qillqaq software
 ## GUNICORN - NGNIX - SUPERVISOR
 
 Para la implementación usaremos las siguientes tecnologías:
-Flask : servidor backend
-Nginx : proxy inverso
-Gunicorn : Para la implementacion de la aplicacion en FLASK
-Supervisor : Monitoriza y controla el proceso de gunicorn. 
+* Flask : servidor backend
+* Nginx : proxy inverso
+* Gunicorn : Para la implementacion de la aplicacion en FLASK
+* Supervisor : Monitoriza y controla el proceso de gunicorn. 
 
 ![Distribución](img1.png)
 
@@ -27,15 +27,61 @@ gunicorn -w 8  myproyect:application -b 0.0.0:5000
 
 ### Configuración NGNIX
 
-## Instalación NGNIX en Linux
+#### Instalación NGNIX en Linux
 
 ```
 sudo apt-get update
 sudo apt-get install nginx
 ```
 
+Despues de la adecuada instalción de NGINX dirigirse a la ruta /etc/nginx/sites-enabled/ , agregar un documento teniendo lo siguiente.
+```
+server {
+    # listen on port 80 (http)
+    listen 80;
+    server_name _;
+   # location / {
+        # redirect any requests to the same URL but on https
+    #    return 301 https://18.188.58.157:443;
+   # }
+    return 301 https://$host$request_uri;
+}
+```
+En esta parte asegurarse de colocar la ruta del FULLCHAIN.PEM y PRIVKEY.PEM solo si se ha generado un certificado, en este caso antes de la configuracion se generó un certificado gracias a LET´S ENCRYPT, para más información dirigirse al siguiente enlace https://letsencrypt.org/
+```
+server {
+    # listen on port 443 (https)
+    listen  443 ssl;
+    server_name _;
 
+    # location of the self-signed SSL certificate
+    ssl_certificate /etc/letsencrypt/live/www.pucp.tk/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.pucp.tk/privkey.pem;
 
+    include snippets/ssl.conf;
+    include snippets/letsencrypt.conf;
+
+    # write access and error logs to /var/log
+    access_log /var/log/proyect_access.log;
+    error_log /var/log/proyect_error.log;
+
+    location / {
+        # forward application requests to the gunicorn server
+        proxy_pass http://0.0.0.0:5000/;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+}
+
+```
+
+Finalmente guardar el archivo y reiniciar el servicio de NGINX
+```
+sudo systemctl restart nginx
+```
 ### Configuración SUPERVISOR
 
 
