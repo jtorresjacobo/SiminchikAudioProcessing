@@ -84,6 +84,7 @@ sudo systemctl restart nginx
 ```
 ### Configuración SUPERVISOR
 
+Para configurar SUPERVISOR dirigirse a la ruta /etc/supervisor/ y crear una carpeta conf.d, para posteriormente crear un archivo con extension .conf, finalmente agregar lo que se detalla a continuación.
 
 ```
 [program:proyect]
