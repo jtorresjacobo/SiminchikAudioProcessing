@@ -4,6 +4,7 @@ Processing of audio corpora for Qillqaq software
 ## GUNICORN - NGNIX - SUPERVISOR
 La automatización de pruebas consiste en utilizar un programa para controlar la ejecución de pruebas y comprobar si los resultados obtenidos son los que estábamos esperando. 
 
+![screenshot](images/1.png)
 
 ### CONFIGURACION GUNICORN
 Para instalar Gunicorn ejecutar, si es necesario anteponer el SUDO.
