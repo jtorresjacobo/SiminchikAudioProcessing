@@ -11,7 +11,7 @@ Supervisor : Monitoriza y controla el proceso de gunicorn.
 
 ![Distribución](img1.png)
 
-### CONFIGURACION GUNICORN
+### Configuración GUNICORN
 Para instalar Gunicorn ejecutar, si es necesario anteponer el SUDO.
 ```
 pip install gunicorn
@@ -25,9 +25,9 @@ gunicorn -w 8  myproyect:application -b 0.0.0:5000
 ```
 
 
-### NGNIX
+### Configuración NGNIX
 
-### SUPERVISOR
+### Configuración SUPERVISOR
 
 
 ```
