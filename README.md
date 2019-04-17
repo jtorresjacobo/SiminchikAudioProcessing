@@ -1,5 +1,47 @@
 # SiminchikAudioProcessing
 Processing of audio corpora for Qillqaq software
+
+## GUNICORN - NGNIX - SUPERVISOR
+La automatización de pruebas consiste en utilizar un programa para controlar la ejecución de pruebas y comprobar si los resultados obtenidos son los que estábamos esperando. 
+
+
+### CONFIGURACION GUNICORN
+Para instalar Gunicorn ejecutar, si es necesario anteponer el SUDO.
+```
+pip install gunicorn
+```
+Para poder ejecutar varios procesos en simultaneo es necesario especificar los WORKERS,cada uno de los WORKERS es un proceso UNIX que carga la aplicación Python. No hay memoria compartida entre los WORKERS.
+El número sugerido deworkers es (2*CPU)+1.
+Para una máquina de doble núcleo (2 CPU), 5 es el workersvalor sugerido .
+En este caso se esta colocando 8 WORKERS.
+```
+gunicorn -w 8  myproyect:application -b 0.0.0:5000
+```
+
+
+### NGNIX
+
+### SUPERVISOR
+
+
+```
+[program:proyect]
+directory=/home/ubuntu/proyect
+command=/home/ubuntu/.env/bin/gunicorn -w 8  myproyect:application -b 0.0.0:5000
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/proyect/proyect.err.log
+stdout_logfile=/var/log/proyect/proyect.out.log
+```
+Para habilitar la configuración, ejecute los siguientes comandos:
+
+```
+$ sudo supervisorctl reread
+$ sudo service supervisor restart
+```
+
+
+
 ## Automatización de pruebas en el servidor
 La automatización de pruebas consiste en utilizar un programa para controlar la ejecución de pruebas y comprobar si los resultados obtenidos son los que estábamos esperando. 
 ### Pre-Requisitos
