@@ -27,6 +27,15 @@ gunicorn -w 8  myproyect:application -b 0.0.0:5000
 
 ### Configuración NGNIX
 
+## Instalación NGNIX en Linux
+
+```
+sudo apt-get update
+sudo apt-get install nginx
+```
+
+
+
 ### Configuración SUPERVISOR
 
 
