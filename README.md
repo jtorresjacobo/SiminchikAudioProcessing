@@ -2,9 +2,14 @@
 Processing of audio corpora for Qillqaq software
 
 ## GUNICORN - NGNIX - SUPERVISOR
-La automatización de pruebas consiste en utilizar un programa para controlar la ejecución de pruebas y comprobar si los resultados obtenidos son los que estábamos esperando. 
 
-![screenshot](images/1.png)
+Para la implementación usaremos las siguientes tecnologías:
+Flask : servidor backend
+Nginx : proxy inverso
+Gunicorn : Para la implementacion de la aplicacion en FLASK
+Supervisor : Monitoriza y controla el proceso de gunicorn. 
+
+![Distribución](img1.png)
 
 ### CONFIGURACION GUNICORN
 Para instalar Gunicorn ejecutar, si es necesario anteponer el SUDO.
@@ -40,7 +45,6 @@ Para habilitar la configuración, ejecute los siguientes comandos:
 $ sudo supervisorctl reread
 $ sudo service supervisor restart
 ```
-
 
 
 ## Automatización de pruebas en el servidor
@@ -113,4 +117,5 @@ Una vez cada dos horas a los 45 minutos después de la hora a partir de las 9:45
 Disparadores de ejecuciones → Ejecutar periódicamente → 45 9-16/2 * * 1-5
 
 ## Contact
+Jean Carlos Torres Jacobo
 jeantj98@gmail.com
